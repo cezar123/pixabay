@@ -1,0 +1,55 @@
+<!doctype html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Pixabay Search</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Pixabay Search</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" role="form">
+            <div class="form-group">
+              <input id="search-user-input" type="text" placeholder="Type keywords here." class="form-control" name="searchText">
+            </div>
+            <button id="search-btn" class="btn btn-primary search" name="searchButton">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 id="search-title">Pixabay Search</h1>
+      <div id="images" class="imageGrid">
+<!--          <div class="item">-->
+<!--              <img src="https://cdn.pixabay.com/photo/2016/07/05/16/53/leaves-1498985_150.jpg" alt="img" class="img-responsive img-thumbnail">-->
+<!--          </div>-->
+<!--          <img src="https://cdn.pixabay.com/photo/2016/11/08/04/49/jungle-1807476_150.jpg" alt="img" class="img-responsive img-thumbnail">-->
+      </div>
+    </div> 
+    
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    </body>
+</html>

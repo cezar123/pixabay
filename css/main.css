@@ -1,0 +1,50 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* Enable these styles if you wish to go into a grid layout.
+ul#images li {
+    width: 120px;
+    height: auto;
+    display: inline-block;
+    position: relative;
+    float: left;
+}
+
+ul#images li img {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+
+ul#images li button {
+    display: inline-block;
+}
+
+--- End of grid layout styles. */
+
+
+
+#images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+#images > img {
+    margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
