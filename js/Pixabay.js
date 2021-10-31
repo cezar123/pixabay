@@ -2,21 +2,53 @@ class Pixabay {
     constructor() {
         this.apiKey = '24010752-9f820942bf2433e4b0b2c22b0';
         this.baseUrl = 'https://pixabay.com/api/';
-        this.httpService = axios;
         this.cache = Cache;
         this.page = 1;
         this.query = null;
+        this.per_page = 50;
+        this.image_type = 'photo';
+        this.orientation = 'horizontal';
+
+        this.httpService = axios.create();
+        this.httpService.interceptors.response.use(this.handleSuccess, this.handleError);
     }
 
-    setQuery(query){
+    handleSuccess(response) {
+        if (!response.data.total) {
+            this.redirectTo('noHits.html');
+        }
+        console.log('handleSuccess: ', response);
+        return response;
+    }
+
+    handleError(error) {
+        switch (error.response.status) {
+            case 401:
+                this.redirectTo('index.html');
+                break;
+            case 404:
+                this.redirectTo('404.html');
+                break;
+            default:
+                this.redirectTo('500.html');
+                break;
+        }
+        return Promise.reject(error)
+    }
+
+    redirectTo(path) {
+        document.location = path;
+    }
+
+    setQuery(query) {
         this.query = encodeURIComponent(query);
     }
 
-    setPage(page){
+    setPage(page) {
         this.page = page;
     }
 
-    async getImages(){
+    async getImages() {
         if (!this.query) {
             throw new Error('Set query first');
         }
@@ -29,34 +61,19 @@ class Pixabay {
             return pics;
         }
 
-        try{
-            const response = await this.httpService.get(`${this.baseUrl}?key=${this.apiKey}&q=${this.query}&page=${page}`);
+        try {
+            const url = `${this.baseUrl}?key=${this.apiKey}&q=${this.query}&page=${this.page}&per_page=${this.per_page}&image_type=${this.image_type}&orientation=${this.orientation}`;
+            const response = await this.httpService.get(url);
             console.log('response: ', response);
-            if (response.status !== 200){
-                console.error(response.data);
-            }
 
             // save to cache
             this.cache.set(cacheKey, response.data.hits);
+
+            return response.data.hits;
         } catch (e) {
             console.error(e);
         }
+
     }
 
-}
-
-
-
-class Cache {
-    static get(key){
-        return localStorage.getItem(key);
-    }
-
-    static set(key, val){
-        localStorage.setItem(key, val);
-    }
-
-    static getKey(query, page){
-        return `${query}_${page}`;
-    }
 }

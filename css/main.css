@@ -36,6 +36,10 @@ ul#images li button {
     margin: 5px;
 }
 
+#pagination{
+    display: none;
+}
+
 
 
 
