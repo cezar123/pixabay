@@ -37,7 +37,7 @@ ul#images li button {
 }
 
 #pagination{
-    display: none;
+    visibility: hidden;
 }
 
 

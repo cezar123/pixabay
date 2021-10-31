@@ -1,29 +1,23 @@
-const picSearch = async function (e) {
-    e.preventDefault();
+const pbApi = new Pixabay();
+const pbImages = new Images();
 
-    let query = document.getElementById('search-user-input').value.trim();
-    if (!query) {
-        return;
-    }
-
-    const pbApi = new Pixabay();
-    pbApi.setQuery(query);
-    let images = await pbApi.getImages();
-    const html = images
-        .map(img => `<img src="${img.previewURL}" alt="${img.tags}" class="img-responsive img-thumbnail" />`)
-        .reduce((prev, curr) => prev + curr);
-
-    document.getElementById('images').innerHTML = html;
-    document.getElementById('pagination').style.display = 'block';
-};
 
 document.addEventListener('DOMContentLoaded', function () {
-    let form = document.getElementsByTagName('form')[0];
-    form.addEventListener('submit', picSearch);
+    const form = document.getElementsByTagName('form')[0];
+    form.addEventListener('submit', pbSearch);
 
-    // let pagination = document.getElementsByClassName('paginate');
-    // pagination.map(btn => btn.addEventListener('click', picSearch));
-}, false);
+    const pages = document.querySelectorAll('.page');
+    for (let page of pages) {
+        page.addEventListener('click', pbSearch)
+    }
+});
+
+const pbSearch = async function (e) {
+    e.preventDefault();
+    let imagesData = await pbImages.get(e);
+    pbImages.render(imagesData);
+    return false;
+};
 
 
 

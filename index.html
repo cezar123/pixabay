@@ -39,35 +39,20 @@
 
     <div class="container">
       <h1 id="search-title">Pixabay Search</h1>
-      <div id="images" class="imageGrid">
-<!--          <div class="item">-->
-<!--              <img src="https://cdn.pixabay.com/photo/2016/07/05/16/53/leaves-1498985_150.jpg" alt="img" class="img-responsive img-thumbnail">-->
-<!--          </div>-->
-<!--          <img src="https://cdn.pixabay.com/photo/2016/11/08/04/49/jungle-1807476_150.jpg" alt="img" class="img-responsive img-thumbnail">-->
-      </div>
+      <div id="images" class="imageGrid"></div>
 
-        <nav aria-label="Page navigation" id="pagination">
+        <nav aria-label="Page navigation" id="pagination" class="text-center">
             <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">6</a></li>
-                <li><a href="#">7</a></li>
-                <li><a href="#">8</a></li>
-                <li><a href="#">9</a></li>
-                <li><a href="#">10</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
+                <li><a href="#" class="page" data-page="1">1</a></li>
+                <li><a href="#" class="page" data-page="2">2</a></li>
+                <li><a href="#" class="page" data-page="3">3</a></li>
+                <li><a href="#" class="page" data-page="4">4</a></li>
+                <li><a href="#" class="page" data-page="5">5</a></li>
+                <li><a href="#" class="page" data-page="6">6</a></li>
+                <li><a href="#" class="page" data-page="7">7</a></li>
+                <li><a href="#" class="page" data-page="8">8</a></li>
+                <li><a href="#" class="page" data-page="9">9</a></li>
+                <li><a href="#" class="page" data-page="10">10</a></li>
             </ul>
         </nav>
     </div> 
@@ -77,6 +62,7 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/Cache.js"></script>
     <script src="js/Pixabay.js"></script>
+    <script src="js/Images.js"></script>
     <script src="js/main.js"></script>
     </body>
 </html>

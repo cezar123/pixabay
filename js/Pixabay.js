@@ -3,7 +3,7 @@ class Pixabay {
         this.apiKey = '24010752-9f820942bf2433e4b0b2c22b0';
         this.baseUrl = 'https://pixabay.com/api/';
         this.cache = Cache;
-        this.page = 1;
+        this.page = null;
         this.query = null;
         this.per_page = 50;
         this.image_type = 'photo';
@@ -11,6 +11,17 @@ class Pixabay {
 
         this.httpService = axios.create();
         this.httpService.interceptors.response.use(this.handleSuccess, this.handleError);
+
+    }
+
+    setQuery(query) {
+        this.query = encodeURIComponent(query);
+        return this;
+    }
+
+    setPage(page) {
+        this.page = page;
+        return this;
     }
 
     handleSuccess(response) {
@@ -40,15 +51,7 @@ class Pixabay {
         document.location = path;
     }
 
-    setQuery(query) {
-        this.query = encodeURIComponent(query);
-    }
-
-    setPage(page) {
-        this.page = page;
-    }
-
-    async getImages() {
+    async get() {
         if (!this.query) {
             throw new Error('Set query first');
         }
